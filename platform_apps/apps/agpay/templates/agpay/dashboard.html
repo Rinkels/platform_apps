@@ -1,0 +1,17 @@
+{% extends "agpay/base.html" %}
+{% block title %}AgPay Merchants{% endblock %}
+{% block content %}
+  <h1>AgPay</h1>
+  <p class="muted">Hosted checkout for agriculture commerce.</p>
+  <div class="grid">
+    {% for merchant in merchants %}
+      <section class="card">
+        <h2>{{ merchant.display_name }}</h2>
+        <p class="muted">{{ merchant.slug }}</p>
+        <p>{{ merchant.products.count }} product{{ merchant.products.count|pluralize }}</p>
+      </section>
+    {% empty %}
+      <div class="card">No active merchants yet.</div>
+    {% endfor %}
+  </div>
+{% endblock %}

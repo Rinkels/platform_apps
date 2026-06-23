@@ -1,0 +1,9 @@
+{% extends "agpay/base.html" %}
+{% block title %}Checkout Cancelled | AgPay{% endblock %}
+{% block content %}
+  <section class="card">
+    <h1>Checkout cancelled</h1>
+    <p class="muted">Order #{{ order.id }} was not completed.</p>
+    <a class="btn" href="{% url 'agpay:dashboard' %}">Back to AgPay</a>
+  </section>
+{% endblock %}

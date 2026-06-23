@@ -1,0 +1,103 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 9EC8-ACFD
+
+ Directory of C:\Projects\platform_apps\platform_apps
+
+02/23/2026  12:19 PM    <DIR>          .
+02/23/2026  12:19 PM    <DIR>          ..
+02/18/2026  06:09 PM    <DIR>          .idea
+02/18/2026  06:10 PM    <DIR>          apps
+02/23/2026  12:19 PM                 0 platform_apps_dir.txt
+               1 File(s)              0 bytes
+
+ Directory of C:\Projects\platform_apps\platform_apps\.idea
+
+02/18/2026  06:09 PM    <DIR>          .
+02/18/2026  06:09 PM    <DIR>          ..
+02/18/2026  05:42 PM               103 .gitignore
+02/18/2026  05:42 PM    <DIR>          inspectionProfiles
+02/18/2026  05:43 PM               284 misc.xml
+02/18/2026  05:42 PM               285 modules.xml
+02/18/2026  05:42 PM               325 platform_apps.iml
+02/18/2026  06:09 PM             2,158 workspace.xml
+               5 File(s)          3,155 bytes
+
+ Directory of C:\Projects\platform_apps\platform_apps\.idea\inspectionProfiles
+
+02/18/2026  05:42 PM    <DIR>          .
+02/18/2026  05:42 PM    <DIR>          ..
+02/18/2026  05:42 PM               174 profiles_settings.xml
+02/18/2026  05:42 PM               839 Project_Default.xml
+               2 File(s)          1,013 bytes
+
+ Directory of C:\Projects\platform_apps\platform_apps\apps
+
+02/18/2026  06:10 PM    <DIR>          .
+02/18/2026  06:10 PM    <DIR>          ..
+02/20/2026  05:06 PM    <DIR>          commerce
+02/18/2026  05:42 PM                 0 __init__.py
+02/18/2026  06:10 PM    <DIR>          __pycache__
+               1 File(s)              0 bytes
+
+ Directory of C:\Projects\platform_apps\platform_apps\apps\commerce
+
+02/20/2026  05:06 PM    <DIR>          .
+02/20/2026  05:06 PM    <DIR>          ..
+02/18/2026  05:46 PM             1,240 admin.py
+02/18/2026  05:43 PM               245 apps.py
+02/20/2026  05:06 PM    <DIR>          migrations
+02/20/2026  05:06 PM             7,431 models.py
+02/18/2026  05:45 PM    <DIR>          services
+02/18/2026  05:42 PM                 0 __init__.py
+02/20/2026  05:06 PM    <DIR>          __pycache__
+               4 File(s)          8,916 bytes
+
+ Directory of C:\Projects\platform_apps\platform_apps\apps\commerce\migrations
+
+02/20/2026  05:06 PM    <DIR>          .
+02/20/2026  05:06 PM    <DIR>          ..
+02/18/2026  06:10 PM            12,824 0001_initial.py
+02/18/2026  06:24 PM             1,448 0002_catalogbundle_org_catalogitem_org_quote_org.py
+02/20/2026  05:06 PM             1,366 0003_remove_catalogitem_commerce_ca_name_62dcd0_idx_and_more.py
+02/18/2026  06:10 PM                 0 __init__.py
+02/20/2026  05:07 PM    <DIR>          __pycache__
+               4 File(s)         15,638 bytes
+
+ Directory of C:\Projects\platform_apps\platform_apps\apps\commerce\migrations\__pycache__
+
+02/20/2026  05:07 PM    <DIR>          .
+02/20/2026  05:07 PM    <DIR>          ..
+02/18/2026  06:10 PM             4,239 0001_initial.cpython-310.pyc
+02/18/2026  06:24 PM               992 0002_catalogbundle_org_catalogitem_org_quote_org.cpython-310.pyc
+02/20/2026  05:07 PM             1,199 0003_remove_catalogitem_commerce_ca_name_62dcd0_idx_and_more.cpython-310.pyc
+02/18/2026  06:10 PM               169 __init__.cpython-310.pyc
+               4 File(s)          6,599 bytes
+
+ Directory of C:\Projects\platform_apps\platform_apps\apps\commerce\services
+
+02/18/2026  05:45 PM    <DIR>          .
+02/18/2026  05:45 PM    <DIR>          ..
+02/18/2026  05:45 PM             1,607 snapshot.py
+02/18/2026  05:45 PM               714 totals.py
+               2 File(s)          2,321 bytes
+
+ Directory of C:\Projects\platform_apps\platform_apps\apps\commerce\__pycache__
+
+02/20/2026  05:06 PM    <DIR>          .
+02/20/2026  05:06 PM    <DIR>          ..
+02/18/2026  06:10 PM             1,895 admin.cpython-310.pyc
+02/18/2026  06:10 PM               532 apps.cpython-310.pyc
+02/20/2026  05:06 PM             6,953 models.cpython-310.pyc
+02/18/2026  06:10 PM               158 __init__.cpython-310.pyc
+               4 File(s)          9,538 bytes
+
+ Directory of C:\Projects\platform_apps\platform_apps\apps\__pycache__
+
+02/18/2026  06:10 PM    <DIR>          .
+02/18/2026  06:10 PM    <DIR>          ..
+02/18/2026  06:10 PM               149 __init__.cpython-310.pyc
+               1 File(s)            149 bytes
+
+     Total Files Listed:
+              28 File(s)         47,329 bytes
+              29 Dir(s)  48,169,512,960 bytes free

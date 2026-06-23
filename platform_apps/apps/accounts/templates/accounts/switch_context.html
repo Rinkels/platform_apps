@@ -1,0 +1,46 @@
+{% extends "base_neon.html" %}
+{% block title %}Invoice{% endblock %}
+{% block content %}
+    <input type="hidden" name="next" value="{{ next }}">
+    <h1>Switch Tenant / Legal Entity</h1>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="intent" id="intent" value="refresh">
+
+      <label>Tenant</label>
+      <select name="tenant_id" required id="tenantSelect">
+        <option value="">-- Select --</option>
+        {% for m in memberships %}
+          <option value="{{ m.tenant.id }}"
+            {% if selected_tenant_id and selected_tenant_id|stringformat:"s" == m.tenant.id|stringformat:"s" %}selected{% endif %}
+          >
+            {{ m.tenant.name }}
+          </option>
+        {% endfor %}
+      </select>
+
+      <label>Legal Entity (optional)</label>
+      <select name="legal_entity_id">
+        <option value="">-- None --</option>
+        {% for le in allowed_legal_entities %}
+          <option value="{{ le.id }}"
+            {% if selected_legal_entity_id and selected_legal_entity_id|stringformat:"s" == le.id|stringformat:"s" %}selected{% endif %}
+          >
+            {{ le.code }} - {{ le.name }}
+          </option>
+        {% endfor %}
+      </select>
+
+      <button type="submit" onclick="document.getElementById('intent').value='set'">Set context</button>
+    </form>
+
+    <p>Tip: selecting a tenant refreshes the legal-entity list.</p>
+
+    <script>
+      document.getElementById("tenantSelect").addEventListener("change", function() {
+        document.getElementById("intent").value = "refresh";
+        this.form.submit();
+      });
+    </script>
+
+{% endblock %}

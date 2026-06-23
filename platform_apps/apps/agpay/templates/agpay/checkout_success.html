@@ -1,0 +1,9 @@
+{% extends "agpay/base.html" %}
+{% block title %}Payment Received | AgPay{% endblock %}
+{% block content %}
+  <section class="card">
+    <h1>Payment received</h1>
+    <p class="muted">Order #{{ order.id }} for {{ order.merchant.display_name }}</p>
+    <p>Total: {{ order.currency }} {{ order.total_amount }}</p>
+  </section>
+{% endblock %}

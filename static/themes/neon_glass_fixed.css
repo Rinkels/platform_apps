@@ -1,0 +1,739 @@
+/* neon_glass.css (Neon Glass Base Theme)
+   - Base public-site theme for Fractals Site Builder
+   - Now supports: html.theme-neon OR body.theme-neon
+*/
+
+/* ===== Theme tokens ===== */
+html.theme-neon,
+body.theme-neon {
+  --fg:            #eaf1ff;
+  --muted:         rgba(234,241,255,.62);
+  --muted-2:       rgba(234,241,255,.48);
+  --border:        rgba(255,255,255,.12);
+  --card-bg:       rgba(255,255,255,.05);
+  --card-bg-2:     rgba(255,255,255,.03);
+  --link:          #63e6ff;
+  --link-hover:    #eaf1ff;
+  --accent:        var(--fractals-primary, #00ffff);
+
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Bootstrap compat: fix muted text contrast ONLY in neon scope */
+html.theme-neon .text-muted,
+body.theme-neon .text-muted { color: var(--muted) !important; }
+
+html.theme-neon .card,
+html.theme-neon .list-group-item,
+body.theme-neon .card,
+body.theme-neon .list-group-item { color: var(--fg); }
+
+/* ===== Base typography (marketing pages) ===== */
+html.theme-neon a,
+body.theme-neon a { color: var(--link); text-decoration: none; }
+
+html.theme-neon a:hover,
+body.theme-neon a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+html.theme-neon h1,
+html.theme-neon h2,
+html.theme-neon h3,
+html.theme-neon h4,
+body.theme-neon h1,
+body.theme-neon h2,
+body.theme-neon h3,
+body.theme-neon h4 {
+  color: var(--accent);
+  text-shadow: 0 0 5px rgba(0,255,255,.22);
+  margin-top: 1.25rem;
+}
+
+html.theme-neon p,
+html.theme-neon li,
+body.theme-neon p,
+body.theme-neon li {
+  color: rgba(255,255,255,.88);
+  line-height: 1.6;
+}
+
+html.theme-neon ul,
+body.theme-neon ul { padding-left: 1.1rem; }
+
+/* ===== Layout helpers ===== */
+html.theme-neon .page-shell,
+body.theme-neon .page-shell {
+  min-height: 100vh;
+  padding: 1.25rem 1rem;
+}
+
+/* ===== Core components ===== */
+html.theme-neon .neon-glass-card,
+html.theme-neon .neon-card,
+body.theme-neon .neon-glass-card,
+body.theme-neon .neon-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 4px 30px rgba(0,0,0,.5);
+  padding: 1.25rem;
+}
+
+html.theme-neon .neon-glass-card:hover,
+body.theme-neon .neon-glass-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 15px rgba(0,255,255,.18);
+  transition: all .2s ease;
+}
+
+html.theme-neon .btn-glass,
+body.theme-neon .btn-glass {
+  background: rgba(255,255,255,.10);
+  color: var(--accent);
+  border: 1px solid rgba(255,255,255,.20);
+  backdrop-filter: blur(10px);
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  transition: all .2s ease-in-out;
+}
+
+html.theme-neon .btn-glass:hover,
+body.theme-neon .btn-glass:hover {
+  background: rgba(0,255,255,.10);
+  color: #ffffff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(0,255,255,.55);
+}
+
+/* ===== Header helpers ===== */
+html.theme-neon .glass-header,
+body.theme-neon .glass-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  margin: 1rem auto 1.25rem;
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(0,0,0,.35);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+html.theme-neon .glass-header .navbar-brand,
+html.theme-neon .glass-header .nav-link,
+body.theme-neon .glass-header .navbar-brand,
+body.theme-neon .glass-header .nav-link {
+  color: var(--fg) !important;
+  text-decoration: none;
+}
+
+html.theme-neon .glass-header .nav-link:hover,
+body.theme-neon .glass-header .nav-link:hover {
+  opacity: .92;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+html.theme-neon .brand-badge,
+body.theme-neon .brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .35rem .7rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+html.theme-neon .brand-dot,
+body.theme-neon .brand-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px rgba(0,255,255,.35);
+}
+
+/* ===== Inputs ===== */
+html.theme-neon .input-glass,
+html.theme-neon .textarea-glass,
+html.theme-neon select.input-glass,
+body.theme-neon .input-glass,
+body.theme-neon .textarea-glass,
+body.theme-neon select.input-glass {
+  width: 100%;
+  padding: .6rem .75rem;
+  border-radius: 12px;
+  background: rgba(0,0,0,.35);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  outline: none;
+}
+
+html.theme-neon .textarea-glass,
+body.theme-neon .textarea-glass { resize: vertical; }
+
+html.theme-neon .input-glass::placeholder,
+html.theme-neon .textarea-glass::placeholder,
+body.theme-neon .input-glass::placeholder,
+body.theme-neon .textarea-glass::placeholder {
+  color: var(--muted);
+}
+
+html.theme-neon .input-glass:focus,
+html.theme-neon .textarea-glass:focus,
+html.theme-neon select.input-glass:focus,
+body.theme-neon .input-glass:focus,
+body.theme-neon .textarea-glass:focus,
+body.theme-neon select.input-glass:focus {
+  border-color: rgba(0,255,255,.55);
+  box-shadow: 0 0 0 .2rem rgba(0,255,255,.12);
+}
+
+/* ===== Tables inside neon cards ===== */
+html.theme-neon .neon-glass-card .table,
+html.theme-neon .neon-glass-card .table th,
+html.theme-neon .neon-glass-card .table td,
+body.theme-neon .neon-glass-card .table,
+body.theme-neon .neon-glass-card .table th,
+body.theme-neon .neon-glass-card .table td {
+  color: var(--fg) !important;
+  border-color: rgba(255,255,255,.08) !important;
+  background: transparent !important;
+}
+
+/* 🔓 BREAK OUT OF BASE CONTAINER */
+.studio-fullscreen {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* Ensure body doesn't re-center */
+body {
+  overflow-x: hidden;
+}
+/* =========================================================
+   🔥 HOT NEON – SALES MODE
+   ========================================================= */
+
+html.theme-neon .neon-card {
+  background: linear-gradient(180deg, rgba(15,30,40,0.85), rgba(10,22,32,0.85));
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  transition: all 0.25s ease;
+}
+
+/* Default cyan glow */
+html.theme-neon .glow {
+  border: 1px solid rgba(0,255,255,0.6);
+  box-shadow:
+    0 0 6px rgba(0,255,255,0.8),
+    0 0 18px rgba(0,255,255,0.6),
+    0 0 38px rgba(0,255,255,0.45),
+    0 0 75px rgba(0,255,255,0.3);
+}
+
+/* Recurring revenue = GREEN */
+html.theme-neon .glow-success {
+  border: 1px solid rgba(0,255,100,0.7);
+  box-shadow:
+    0 0 6px rgba(0,255,100,0.9),
+    0 0 22px rgba(0,255,100,0.7),
+    0 0 45px rgba(0,255,100,0.5),
+    0 0 85px rgba(0,255,100,0.3);
+}
+
+/* One-time revenue = GOLD */
+html.theme-neon .glow-warning {
+  border: 1px solid rgba(255,200,0,0.8);
+  box-shadow:
+    0 0 6px rgba(255,200,0,0.95),
+    0 0 22px rgba(255,200,0,0.75),
+    0 0 48px rgba(255,200,0,0.55),
+    0 0 90px rgba(255,200,0,0.35);
+}
+
+/* High-risk / premium */
+html.theme-neon .glow-danger {
+  border: 1px solid rgba(255,80,80,0.8);
+  box-shadow:
+    0 0 6px rgba(255,80,80,0.95),
+    0 0 22px rgba(255,80,80,0.75),
+    0 0 48px rgba(255,80,80,0.55),
+    0 0 90px rgba(255,80,80,0.35);
+}
+/* TEMP DEBUG: if you don't see hot pink, this file isn't being loaded */
+html.theme-neon .glow-success,
+body.theme-neon .glow-success {
+  outline: 6px solid hotpink !important;
+}
+body {
+  min-height: 100vh;
+  color: rgba(255,255,255,0.88);
+
+  /* self-contained background (no external image) */
+  background: radial-gradient(1200px 600px at 20% 10%, rgba(0,255,200,0.10), transparent 55%),
+              radial-gradient(900px 500px at 85% 25%, rgba(255,0,140,0.10), transparent 60%),
+              linear-gradient(135deg, #07141a, #0b1f27 55%, #07141a);
+}
+.neon-glow{
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 22px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+}
+
+.neon-glow.glow-hot{
+  border-color: rgba(255,0,140,0.70);
+  box-shadow:
+    0 0 10px rgba(255,0,140,0.90),
+    0 0 28px rgba(255,0,140,0.60),
+    0 0 70px rgba(255,0,140,0.35),
+    0 10px 30px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+/* =========================
+   Sales (Hot Neon) Variant
+   Usage: body.theme-neon.theme-sales
+   ========================= */
+
+html.theme-neon.theme-sales,
+body.theme-neon.theme-sales {
+  --accent: #ff2bd6;
+  --link: #ff5af2;
+  --link-hover: #ffffff;
+}
+
+/* Stronger override in case dashboard css is fighting background */
+body.theme-neon.theme-sales {
+  background: radial-gradient(1200px 700px at 20% 10%, rgba(255,43,214,.22), transparent 55%),
+              radial-gradient(900px 600px at 80% 30%, rgba(0,255,255,.16), transparent 60%),
+              linear-gradient(135deg, #05060a, #0b0f14 45%, #07080d) !important;
+}
+
+/* Pink glow utility */
+html.theme-neon .glow-sales,
+body.theme-neon .glow-sales {
+  box-shadow:
+    0 0 10px rgba(255,43,214,0.55),
+    0 0 22px rgba(255,43,214,0.28),
+    0 0 42px rgba(255,43,214,0.18);
+  border: 1px solid rgba(255,43,214,0.35);
+}
+
+/* Glass badge */
+html.theme-neon .badge-glass,
+body.theme-neon .badge-glass {
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.92);
+  border-radius: 999px;
+  padding: .2rem .55rem;
+  font-size: .75rem;
+}
+
+/* Accent button variant */
+html.theme-neon .btn-glass-accent,
+body.theme-neon .btn-glass-accent {
+  border-color: rgba(255,43,214,.55);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(255,43,214,.20);
+}
+
+html.theme-neon .btn-glass-accent:hover,
+body.theme-neon .btn-glass-accent:hover {
+  background: rgba(255,43,214,.18);
+  border-color: rgba(255,43,214,.85);
+  box-shadow: 0 0 16px rgba(255,43,214,.45);
+}
+.glow-recurring {
+  border: 1px solid rgba(0,255,160,0.6);
+  box-shadow:
+    0 0 10px rgba(0,255,160,0.6),
+    0 0 30px rgba(0,255,160,0.4),
+    0 0 60px rgba(0,255,160,0.2);
+}
+.neon-glass-card {
+  transition: all 0.25s ease;
+}
+
+.neon-glass-card:hover {
+  transform: translateY(-4px);
+}
+/* --- Sales vs Recurring glow (must be AFTER base neon-glass-card rules) --- */
+html.theme-neon .neon-glass-card.glow-sales,
+body.theme-neon .neon-glass-card.glow-sales{
+  border: 1px solid rgba(255,43,214,.55);
+  box-shadow:
+    0 0 10px rgba(255,43,214,.45),
+    0 0 30px rgba(255,43,214,.28),
+    0 0 60px rgba(255,43,214,.16);
+}
+
+html.theme-neon .neon-glass-card.glow-recurring,
+body.theme-neon .neon-glass-card.glow-recurring{
+  border: 1px solid rgba(0,255,160,.60);
+  box-shadow:
+    0 0 10px rgba(0,255,160,.55),
+    0 0 30px rgba(0,255,160,.35),
+    0 0 60px rgba(0,255,160,.20);
+}
+/* =========================
+   Catalog card sizing (scoped)
+   ========================= */
+
+.catalog-grid .catalog-card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog-grid .catalog-card-body {
+  flex: 1 1 auto;
+  min-height: 170px; /* tweak: 160–220 depending on your taste */
+}
+
+.catalog-grid .catalog-card-actions {
+  margin-top: auto;
+}
+/* =========================================================
+   Neon Glass overrides for Bootstrap list-groups (CRM widgets)
+   ========================================================= */
+
+html.theme-neon .list-group,
+body.theme-neon .list-group {
+  --bs-list-group-bg: transparent;             /* bootstrap var */
+  --bs-list-group-border-color: rgba(255,255,255,.10);
+  --bs-list-group-color: rgba(255,255,255,.90);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+html.theme-neon .list-group-item,
+body.theme-neon .list-group-item {
+  background: rgba(10, 12, 16, .55) !important; /* kill white */
+  color: rgba(255,255,255,.92);
+  border-color: rgba(255,255,255,.10) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+html.theme-neon .list-group-item + .list-group-item,
+body.theme-neon .list-group-item + .list-group-item {
+  border-top-color: rgba(255,255,255,.08) !important;
+}
+
+/* Hover/active states */
+html.theme-neon .list-group-item:hover,
+body.theme-neon .list-group-item:hover {
+  background: rgba(255, 43, 214, .08) !important; /* hot neon kiss 💗 */
+}
+
+html.theme-neon .list-group-item.active,
+body.theme-neon .list-group-item.active {
+  background: rgba(255, 43, 214, .16) !important;
+  border-color: rgba(255, 43, 214, .55) !important;
+  color: #fff;
+}
+
+/* If your partial uses a custom class like hotlist-item */
+html.theme-neon .hotlist-item,
+body.theme-neon .hotlist-item {
+  background: rgba(10, 12, 16, .55) !important;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 12px;
+}
+
+/* Optional: make buttons/icons inside list items look “glass” */
+html.theme-neon .list-group-item .btn,
+body.theme-neon .list-group-item .btn {
+  border-color: rgba(255,255,255,.18);
+}
+
+/* =========================================================
+   DealerMaster App Shell + Side Navigation
+   - Keeps sidebar beside the body on desktop/tablet widths
+   - Stacks only on small mobile screens
+   ========================================================= */
+
+body.theme-neon.dm-shell-body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: auto; /* allow usable app layout instead of clipping */
+}
+
+.dm-app-shell {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 16px;
+  min-height: 100vh;
+  padding: 16px;
+  align-items: start;
+}
+
+.dm-side-shell {
+  position: sticky;
+  top: 16px;
+  height: calc(100vh - 32px);
+  min-width: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 14px;
+}
+
+.dm-main-shell {
+  min-width: 0;
+  overflow: visible;
+  padding: 18px;
+}
+
+/* Brand block */
+.dm-side-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 14px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+
+.dm-side-brand__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 14px;
+  font-weight: 900;
+  color: #fff;
+  background: rgba(0,255,255,.10);
+  border: 1px solid rgba(0,255,255,.35);
+  box-shadow:
+    0 0 12px rgba(0,255,255,.30),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.dm-side-brand__title {
+  font-weight: 900;
+  letter-spacing: .3px;
+  color: var(--fg);
+}
+
+.dm-side-brand__sub {
+  font-size: .82rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* Context chip */
+.dm-side-context {
+  margin: 10px 6px 14px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.22);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.dm-side-context__label {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted-2);
+  margin-bottom: 4px;
+}
+
+.dm-side-context__value {
+  font-size: .86rem;
+  color: rgba(255,255,255,.88);
+  line-height: 1.3;
+}
+
+/* Sidebar tree */
+.dm-side-nav {
+  margin-top: 8px;
+}
+
+.sidebar__list,
+.sidebar__sublist {
+  list-style: none;
+  padding-left: 0 !important;
+  margin: 0;
+}
+
+.sidebar__sublist {
+  margin-top: 5px;
+  padding-left: 12px !important;
+  border-left: 1px solid rgba(255,255,255,.08);
+}
+
+.sidebar__item {
+  margin: 5px 0;
+}
+
+.sidebar__link,
+.sidebar__group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 34px;
+  padding: 7px 9px;
+  border-radius: 13px;
+  border: 1px solid transparent;
+  text-decoration: none !important;
+  color: rgba(255,255,255,.86);
+  transition:
+    background .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease,
+    transform .18s ease;
+}
+
+.sidebar__group {
+  color: rgba(255,255,255,.66);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: .78rem;
+  letter-spacing: .05em;
+}
+
+.sidebar__link:hover {
+  color: #fff;
+  background: rgba(0,255,255,.075);
+  border-color: rgba(0,255,255,.22);
+  box-shadow: 0 0 14px rgba(0,255,255,.12);
+  transform: translateX(2px);
+}
+
+.sidebar__link.is-active {
+  color: #fff;
+  background: rgba(0,255,255,.13);
+  border-color: rgba(0,255,255,.40);
+  box-shadow:
+    0 0 10px rgba(0,255,255,.20),
+    inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.sidebar__code {
+  flex: 0 0 52px;
+  max-width: 52px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: .76rem;
+  color: rgba(99,230,255,.78);
+}
+
+.sidebar__label {
+  min-width: 0;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Footer */
+.dm-side-footer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 6px 4px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.dm-side-footer__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 10px;
+  border-radius: 12px;
+  color: var(--muted);
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  text-decoration: none !important;
+}
+
+.dm-side-footer__link:hover {
+  color: #fff;
+  background: rgba(0,255,255,.08);
+  border-color: rgba(0,255,255,.25);
+}
+
+/* Messages */
+.dm-message-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.dm-message {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.24);
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.92);
+}
+
+.dm-message--success {
+  border-color: rgba(0,255,160,.42);
+  box-shadow: 0 0 12px rgba(0,255,160,.12);
+}
+
+.dm-message--error,
+.dm-message--danger {
+  border-color: rgba(255,80,80,.42);
+  box-shadow: 0 0 12px rgba(255,80,80,.12);
+}
+
+.dm-message--warning {
+  border-color: rgba(255,200,0,.42);
+  box-shadow: 0 0 12px rgba(255,200,0,.12);
+}
+
+/* Mobile: stack only when the viewport is truly narrow */
+@media (max-width: 540px) {
+  .dm-app-shell {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .dm-side-shell {
+    position: relative;
+    top: auto;
+    height: auto;
+    max-height: 46vh;
+  }
+
+  .dm-main-shell {
+    padding: 14px;
+  }
+
+  .dm-side-brand {
+    align-items: flex-start;
+  }
+
+  .sidebar__code {
+    flex-basis: 46px;
+    max-width: 46px;
+    font-size: .72rem;
+  }
+}

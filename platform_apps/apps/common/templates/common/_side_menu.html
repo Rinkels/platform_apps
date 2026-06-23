@@ -1,0 +1,7 @@
+{% load static %}
+
+  <ul class="sidebar__list">
+    {% for item in menu.items %}
+      {% include "common/_side_menu_node.html" with node=item depth=0 %}
+    {% endfor %}
+  </ul>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}AgPay{% endblock %}</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, Segoe UI, Arial, sans-serif; }
+    body { margin: 0; background: #071114; color: #eef6f4; }
+    a { color: #65e4c7; }
+    .shell { max-width: 1080px; margin: 0 auto; padding: 32px 20px; }
+    .card { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.045); border-radius: 12px; padding: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+    .muted { color: rgba(238,246,244,.68); }
+    .btn { display: inline-block; border: 0; border-radius: 10px; padding: 11px 18px; background: #65e4c7; color: #06100e; font-weight: 700; text-decoration: none; cursor: pointer; }
+    input, select { width: 100%; box-sizing: border-box; padding: 10px 12px; border-radius: 9px; border: 1px solid rgba(255,255,255,.18); background: rgba(0,0,0,.25); color: #eef6f4; }
+    label { display: block; margin: 12px 0 6px; color: rgba(238,246,244,.72); }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="card" style="margin-bottom:16px;">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

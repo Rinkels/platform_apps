@@ -1,0 +1,7 @@
+from django.apps import AppConfig
+
+class CommerceConfig(AppConfig):
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "platform_apps.apps.commerce"
+    label = "commerce"
+    verbose_name = "Commerce (Catalog + Quotes)"

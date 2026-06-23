@@ -1,0 +1,32 @@
+{% extends "agpay/base.html" %}
+{% block title %}{{ product.name }} | AgPay{% endblock %}
+{% block content %}
+  <a href="{% url 'agpay:dashboard' %}">AgPay</a>
+  <section class="card" style="margin-top:18px;">
+    <p class="muted">{{ product.merchant.display_name }}</p>
+    <h1>{{ product.name }}</h1>
+    {% if product.description %}<p>{{ product.description }}</p>{% endif %}
+
+    {% if variants %}
+      <form method="post" action="{% url 'agpay:product_checkout' product.merchant.slug product.slug %}">
+        {% csrf_token %}
+        <label for="variant_id">Option</label>
+        <select id="variant_id" name="variant_id">
+          {% for variant in variants %}
+            <option value="{{ variant.id }}">{{ variant.name }} - {{ variant.currency }} {{ variant.unit_amount }}</option>
+          {% endfor %}
+        </select>
+
+        <label for="quantity">Quantity</label>
+        <input id="quantity" name="quantity" type="number" min="1" value="1">
+
+        <label for="buyer_email">Email for receipt</label>
+        <input id="buyer_email" name="buyer_email" type="email" placeholder="you@example.com">
+
+        <button class="btn" type="submit" style="margin-top:18px;">Continue to checkout</button>
+      </form>
+    {% else %}
+      <p class="muted">No active variants are available for checkout yet.</p>
+    {% endif %}
+  </section>
+{% endblock %}

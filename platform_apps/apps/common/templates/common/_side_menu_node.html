@@ -1,0 +1,29 @@
+{% load static %}
+{% load safe_url %}
+
+<li class="sidebar__item sidebar__item--depth-{{ depth }}">
+  {% if node.route_path %}
+    <a class="sidebar__link" href="{{ node.route_path }}">
+      <span class="sidebar__code">({{ node.code }})</span>
+      <span class="sidebar__label">{{ node.label }}</span>
+    </a>
+  {% elif node.route_name %}
+    <a class="sidebar__link" href="{% safe_url node.route_name %}">
+      <span class="sidebar__code">({{ node.code }})</span>
+      <span class="sidebar__label">{{ node.label }}</span>
+    </a>
+  {% else %}
+    <div class="sidebar__group">
+      <span class="sidebar__code">({{ node.code }})</span>
+      <span class="sidebar__label">{{ node.label }}</span>
+    </div>
+  {% endif %}
+
+  {% if node.children %}
+    <ul class="sidebar__sublist">
+      {% for child in node.children %}
+        {% include "common/_side_menu_node.html" with node=child depth=depth|add:1 %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</li>
