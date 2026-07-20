@@ -1,17 +1,38 @@
 {% extends "agpay/base.html" %}
 {% block title %}AgPay Merchants{% endblock %}
 {% block content %}
-  <h1>AgPay</h1>
-  <p class="muted">Hosted checkout for agriculture commerce.</p>
+  <section class="card hero-card" style="margin-bottom:22px;">
+    <div class="eyebrow">AgPay network</div>
+    <h1>Checkout rails for agriculture.</h1>
+    <p class="muted" style="max-width: 68ch;">AgPay gives agri businesses a reusable payment layer for deposits, batch orders, product reservations, and merchant settlement.</p>
+  </section>
+
   <div class="grid">
     {% for merchant in merchants %}
-      <section class="card">
-        <h2>{{ merchant.display_name }}</h2>
+      <section class="card merchant-card">
+        <div class="eyebrow">Merchant</div>
+        <h2 style="margin-top:8px;">{{ merchant.display_name }}</h2>
         <p class="muted">{{ merchant.slug }}</p>
-        <p>{{ merchant.products.count }} product{{ merchant.products.count|pluralize }}</p>
+        <div class="summary-row">
+          <span class="muted">Products</span>
+          <strong>{{ merchant.products.count }}</strong>
+        </div>
+        <div class="summary-row">
+          <span class="muted">Charges</span>
+          <strong>{% if merchant.charges_enabled %}Enabled{% else %}Test setup{% endif %}</strong>
+        </div>
+        <div class="merchant-actions">
+          {% for product in merchant.products.all %}
+            {% if product.is_active %}
+              <a class="product-link" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+            {% endif %}
+          {% empty %}
+            <span class="soft">No checkout products yet.</span>
+          {% endfor %}
+        </div>
       </section>
     {% empty %}
-      <div class="card">No active merchants yet.</div>
+      <div class="card summary-card">No active merchants yet.</div>
     {% endfor %}
   </div>
 {% endblock %}

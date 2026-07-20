@@ -1,32 +1,103 @@
 {% extends "agpay/base.html" %}
 {% block title %}{{ product.name }} | AgPay{% endblock %}
 {% block content %}
-  <a href="{% url 'agpay:dashboard' %}">AgPay</a>
-  <section class="card" style="margin-top:18px;">
-    <p class="muted">{{ product.merchant.display_name }}</p>
-    <h1>{{ product.name }}</h1>
-    {% if product.description %}<p>{{ product.description }}</p>{% endif %}
+  <div class="checkout-grid">
+    <section class="card hero-card">
+      <div class="eyebrow">{{ product.merchant.display_name }}</div>
+      <h1>{{ product.name }}</h1>
+      {% if product.description %}
+        <p class="muted" style="max-width: 64ch;">{{ product.description }}</p>
+      {% endif %}
 
-    {% if variants %}
-      <form method="post" action="{% url 'agpay:product_checkout' product.merchant.slug product.slug %}">
-        {% csrf_token %}
-        <label for="variant_id">Option</label>
-        <select id="variant_id" name="variant_id">
+      <div class="badge-row">
+        <span class="badge">Stripe Checkout</span>
+        <span class="badge">Merchant order record</span>
+        <span class="badge">{{ product.merchant.default_currency }} payments</span>
+      </div>
+
+      <div class="grid" style="margin-top:28px;">
+        <div>
+          <div class="eyebrow">Purpose-built</div>
+          <p class="muted">Deposits, pre-orders, batch releases, and farm-to-fork transactions in one payment layer.</p>
+        </div>
+        <div>
+          <div class="eyebrow">Merchant-first</div>
+          <p class="muted">Your order stays tied to {{ product.merchant.display_name }} while AgPay manages the checkout rail.</p>
+        </div>
+      </div>
+
+      <div class="product-visual" aria-hidden="true">
+        <div class="payment-rail"></div>
+        <div class="rail-node">
+          <strong>{{ product.merchant.display_name }}</strong>
+          <span>Publishes a product or deposit offer.</span>
+        </div>
+        <div class="rail-node">
+          <strong>AgPay</strong>
+          <span>Creates the checkout and records the order.</span>
+        </div>
+        <div class="rail-node">
+          <strong>Stripe</strong>
+          <span>Handles the secure card payment flow.</span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="card summary-card">
+      <div class="eyebrow">Secure checkout</div>
+      <h2 style="margin-top:8px;">Reserve with AgPay</h2>
+
+      {% if variants %}
+        <form method="post" action="{% url 'agpay:product_checkout' product.merchant.slug product.slug %}">
+          {% csrf_token %}
+          <label for="variant_id">Option</label>
+          <select id="variant_id" name="variant_id">
+            {% for variant in variants %}
+              <option value="{{ variant.id }}">{{ variant.name }} - {{ variant.currency }} {{ variant.unit_amount }}</option>
+            {% endfor %}
+          </select>
+
+          <label for="quantity">Quantity</label>
+          <input id="quantity" name="quantity" type="number" min="1" value="1">
+
+          <label for="buyer_email">Email for receipt</label>
+          <input id="buyer_email" name="buyer_email" type="email" placeholder="you@example.com">
+
           {% for variant in variants %}
-            <option value="{{ variant.id }}">{{ variant.name }} - {{ variant.currency }} {{ variant.unit_amount }}</option>
+            {% if forloop.first %}
+              <div class="summary-row" style="margin-top:18px;">
+                <span class="muted">Starting amount</span>
+                <strong>{{ variant.currency }} {{ variant.unit_amount }}</strong>
+              </div>
+            {% endif %}
           {% endfor %}
-        </select>
 
-        <label for="quantity">Quantity</label>
-        <input id="quantity" name="quantity" type="number" min="1" value="1">
+          <div class="mini-kpis">
+            <div class="mini-kpi">
+              <strong>Test</strong>
+              <span>mode ready</span>
+            </div>
+            <div class="mini-kpi">
+              <strong>2.5%</strong>
+              <span>platform fee</span>
+            </div>
+            <div class="mini-kpi">
+              <strong>CAD</strong>
+              <span>settlement</span>
+            </div>
+          </div>
 
-        <label for="buyer_email">Email for receipt</label>
-        <input id="buyer_email" name="buyer_email" type="email" placeholder="you@example.com">
+          <button class="btn" type="submit" style="width:100%; margin-top:18px;">Continue to Stripe</button>
+        </form>
+      {% else %}
+        <p class="muted">No active variants are available for checkout yet.</p>
+      {% endif %}
 
-        <button class="btn" type="submit" style="margin-top:18px;">Continue to checkout</button>
-      </form>
-    {% else %}
-      <p class="muted">No active variants are available for checkout yet.</p>
-    {% endif %}
-  </section>
+      <div class="trust-list">
+        <div class="trust-item"><span class="trust-dot"></span><span>Payment details are handled by Stripe Checkout.</span></div>
+        <div class="trust-item"><span class="trust-dot"></span><span>AgPay records the order and merchant payment status.</span></div>
+        <div class="trust-item"><span class="trust-dot"></span><span>Built for deposits, allocations, and rural commerce workflows.</span></div>
+      </div>
+    </aside>
+  </div>
 {% endblock %}
